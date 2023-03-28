@@ -58,8 +58,15 @@ For example:
 return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
-  // Solution code here...
+  let sum = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      sum += matrix[i][j];
+    }
+  }
+  return sum;
 };
+
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -85,9 +92,19 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
-
+  const totalSales = [];
+  for (let i = 0; i < hoursOpen.length; i++) {
+    let hourlyTotal = 0;
+    for (let j = 0; j < stores.length; j++) {
+      hourlyTotal += stores[j][i];
+    }
+    totalSales.push(hourlyTotal);
+  }
+  return totalSales;
 };
+
+console.log(grandTotal(cookieStores));
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -99,9 +116,32 @@ Here is sample data for the 9:00 sales: { sales: '88 cookies', time: '9 a.m.' }.
 Write a function named salesData that uses forEach to iterate over the hourlySales array and create an object for each hour. Return an array of the formatted data.
 ------------------------------------------------------------------------------------------------ */
 
+const hoursOpen = ['9 a.m.', '10 a.m.', '11 a.m.', '12 p.m.', '1 p.m.', '2 p.m.', '3 p.m.', '4 p.m.', '5 p.m.', '6 p.m.', '7 p.m.', '8 p.m.'];
+
+const firstPike = [17, 18, 23, 24, 24, 12, 13, 27, 30, 20, 24, 18];
+const seaTac = [26, 5, 5, 59, 23, 39, 38, 20, 30, 7, 59, 43];
+const seattleCenter = [7, 14, 19, 22, 15, 4, 23, 27, 28, 23, 1, 29];
+const capHill = [5, 85, 58, 51, 50, 13, 33, 32, 47, 94, 31, 62];
+const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
+
+const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
+
 const salesData = (hours, data) => {
-  // Solution code here...
+  const formattedData = [];
+  hours.forEach((hour, index) => {
+    let hourlyTotal = 0;
+    data.forEach(store => {
+      hourlyTotal += store[index];
+    });
+    formattedData.push({
+      sales: `${hourlyTotal} cookies`,
+      time: hour
+    });
+  });
+  return formattedData;
 };
+
+console.log(salesData(hoursOpen, cookieStores));
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
