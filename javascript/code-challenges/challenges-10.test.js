@@ -1,5 +1,6 @@
 'use strict';
 
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
@@ -8,9 +9,17 @@ Write a function named returnTen, takes in a string and uses split and splice to
 ------------------------------------------------------------------------------------------------ */
 
 function returnTen(str){
+ arrays-2d
+  let chars = str.split('');
+  let lastTenChars = chars.splice(-10);
+  return lastTenChars;
+}
+
+
   // Solution code here...
 }
 
+ main
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
@@ -26,7 +35,21 @@ For example:
 return: 23
 ------------------------------------------------------------------------------------------------ */
 const findMax = (matrix) => {
-  // Solution code here...
+ arrays-2d
+
+  let max = matrix[0][0];
+
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] > max) {
+        max = matrix[i][j];
+      }
+    }
+  }
+
+  return max;
+
+   main
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -44,10 +67,22 @@ For example:
 return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
+ arrays-2d
+  let sum = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      sum += matrix[i][j];
+    }
+  }
+  return sum;
+};
+
+
   // Solution code here...
 };
 
 
+ main
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
@@ -71,9 +106,23 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
+ arrays-2d
+  const totalSales = [];
+  for (let i = 0; i < hoursOpen.length; i++) {
+    let hourlyTotal = 0;
+    for (let j = 0; j < stores.length; j++) {
+      hourlyTotal += stores[j][i];
+    }
+    totalSales.push(hourlyTotal);
+  }
+  return totalSales;
+};
+
+console.log(grandTotal(cookieStores))
   // Solution code here...
 
 };
+ main
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -85,15 +134,59 @@ Here is sample data for the 9:00 sales: { sales: '88 cookies', time: '9 a.m.' }.
 Write a function named salesData that uses forEach to iterate over the hourlySales array and create an object for each hour. Return an array of the formatted data.
 ------------------------------------------------------------------------------------------------ */
 
+ arrays-2d
+const hourOpen = ['9 a.m.', '10 a.m.', '11 a.m.', '12 p.m.', '1 p.m.', '2 p.m.', '3 p.m.', '4 p.m.', '5 p.m.', '6 p.m.', '7 p.m.', '8 p.m.'];
+
+const firstpike = [17, 18, 23, 24, 24, 12, 13, 27, 30, 20, 24, 18];
+const seatac = [26, 5, 5, 59, 23, 39, 38, 20, 30, 7, 59, 43];
+const seattlecenter = [7, 14, 19, 22, 15, 4, 23, 27, 28, 23, 1, 29];
+const caphill = [5, 85, 58, 51, 50, 13, 33, 32, 47, 94, 31, 62];
+const alkibeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
+
+const cookiestores = [firstpike, seatac, seattlecenter, caphill, alkibeach];
+
+const salesData = (hours, data) => {
+  const formattedData = [];
+  hours.forEach((hour, index) => {
+    let hourlyTotal = 0;
+    data.forEach(store => {
+      hourlyTotal += store[index];
+    });
+    formattedData.push({
+      sales: `${hourlyTotal} cookies`,
+      time: hour
+    });
+  });
+  return formattedData;
+};
+
+console.log(salesData(hourOpen, cookiestores));
+
 const salesData = (hours, data) => {
   // Solution code here...
 };
 
+ main
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
 Write a function named howManyTreats that will return the quantity of treats you need to pick up from the pet store today from this array. The structure of the array will not change.
 ------------------------------------------------------------------------------------------------ */
+
+arrays-2d
+const howManyTreats = (arr) => {
+  const petStore = arr.find(store => store.store === "Petstore");
+  const numTreats = petStore.items.reduce((total, item) => {
+    if (item.name === 'Treats') {
+      return total + item.quantity;
+    } else {
+      return total;
+    }
+  }, 0);
+  return numTreats;
+};
+
+
 
 const errands = [
   {
@@ -114,6 +207,7 @@ const howManyTreats = (arr) => {
   // Solution code here...
 };
 
+ main
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
@@ -214,7 +308,7 @@ DO NOT CHANGE any of the below code.
 
 Run your tests from the console: jest challenge-12.test.js
 
------------------------------------------------------------------------------------------------- */
+
 
 describe('Testing challenge 1', () => {
   test('it should return the last 10 characters of a string as an array', () => {
@@ -269,7 +363,10 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+ arrays-2d
+describe('Testing challenge 7', () => {
+
+main
   const battleshipData = [
     ['#', ' ', '#', ' '],
     ['#', ' ', '#', ' '],
@@ -288,7 +385,9 @@ xdescribe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+ arrays-2d
+describe('Testing challenge 8', () => {
+
   test('It should multiply all the numbers together', () => {
     expect(calculateProduct([[1, 2], [3, 4], [5, 6]])).toStrictEqual(720);
   });
@@ -301,20 +400,27 @@ xdescribe('Testing challenge 8', () => {
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+ arrays-2d
+describe('Testing challenge 9', () => 
+
   test('It should calculate and return the average temperature of the data set', () => {
     expect(averageDailyTemperature(weeklyTemperatures)).toStrictEqual(60.25);
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+ arrays-2d
+describe('Testing challenge 10', () => {
+
   test('It should return the lowest weekly average temperature within the data set', () => {
     expect(lowestWeeklyAverage(weeklyTemperatures)).toStrictEqual(57);
     expect(lowestWeeklyAverage(lowestWeeklyTemperatureData)).toStrictEqual(46);
   });
 });
 
-xdescribe('Testing challenge 11', () => {
+ arrays-2d
+describe('Testing challenge 11', () => {
+
+ main
   test('It should return the total count for each row', () => {
     let result = excel('1,1,1\n4,4,4\n9,9,9');
     expect(result.length).toStrictEqual(3);
@@ -323,3 +429,4 @@ xdescribe('Testing challenge 11', () => {
     expect(result[2]).toStrictEqual(27);
   });
 });
+------------------------------------------------------------------------------------------------ */
