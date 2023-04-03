@@ -1,5 +1,6 @@
 'use strict';
 
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
@@ -8,12 +9,17 @@ Write a function named returnTen, takes in a string and uses split and splice to
 ------------------------------------------------------------------------------------------------ */
 
 function returnTen(str){
+ arrays-2d
   let chars = str.split('');
   let lastTenChars = chars.splice(-10);
   return lastTenChars;
 }
 
 
+  // Solution code here...
+}
+
+ main
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
@@ -29,6 +35,7 @@ For example:
 return: 23
 ------------------------------------------------------------------------------------------------ */
 const findMax = (matrix) => {
+ arrays-2d
 
   let max = matrix[0][0];
 
@@ -41,6 +48,8 @@ const findMax = (matrix) => {
   }
 
   return max;
+
+   main
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -58,6 +67,7 @@ For example:
 return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
+ arrays-2d
   let sum = 0;
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[i].length; j++) {
@@ -68,7 +78,11 @@ const totalSum = (matrix) => {
 };
 
 
+  // Solution code here...
+};
 
+
+ main
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
@@ -92,6 +106,7 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
+ arrays-2d
   const totalSales = [];
   for (let i = 0; i < hoursOpen.length; i++) {
     let hourlyTotal = 0;
@@ -103,8 +118,11 @@ const grandTotal = (stores) => {
   return totalSales;
 };
 
-console.log(grandTotal(cookieStores));
+console.log(grandTotal(cookieStores))
+  // Solution code here...
 
+};
+ main
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -116,6 +134,7 @@ Here is sample data for the 9:00 sales: { sales: '88 cookies', time: '9 a.m.' }.
 Write a function named salesData that uses forEach to iterate over the hourlySales array and create an object for each hour. Return an array of the formatted data.
 ------------------------------------------------------------------------------------------------ */
 
+ arrays-2d
 const hourOpen = ['9 a.m.', '10 a.m.', '11 a.m.', '12 p.m.', '1 p.m.', '2 p.m.', '3 p.m.', '4 p.m.', '5 p.m.', '6 p.m.', '7 p.m.', '8 p.m.'];
 
 const firstpike = [17, 18, 23, 24, 24, 12, 13, 27, 30, 20, 24, 18];
@@ -143,12 +162,18 @@ const salesData = (hours, data) => {
 
 console.log(salesData(hourOpen, cookiestores));
 
+const salesData = (hours, data) => {
+  // Solution code here...
+};
+
+ main
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
 Write a function named howManyTreats that will return the quantity of treats you need to pick up from the pet store today from this array. The structure of the array will not change.
 ------------------------------------------------------------------------------------------------ */
 
+arrays-2d
 const howManyTreats = (arr) => {
   const petStore = arr.find(store => store.store === "Petstore");
   const numTreats = petStore.items.reduce((total, item) => {
@@ -162,6 +187,27 @@ const howManyTreats = (arr) => {
 };
 
 
+
+const errands = [
+  {
+    store: 'Grocery store',
+    items: [{ name: 'Eggs', quantity: 12 }, { name: 'Milk', quantity: 1 }, { name: 'Apples', quantity: 3 }]
+  },
+  {
+    store: 'Drug store',
+    items: [{ name: 'Toothpaste', quantity: 1 }, { name: 'Toothbrush', quantity: 3 }, { name: 'Mouthwash', quantity: 1 }]
+  },
+  {
+    store: 'Pet store',
+    items: [{ name: 'Cans of food', quantity: 8 }, { name: 'Treats', quantity: 24 }, { name: 'Leash', quantity: 1 }]
+  }
+];
+
+const howManyTreats = (arr) => {
+  // Solution code here...
+};
+
+ main
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
@@ -262,7 +308,7 @@ DO NOT CHANGE any of the below code.
 
 Run your tests from the console: jest challenge-12.test.js
 
------------------------------------------------------------------------------------------------- */
+
 
 describe('Testing challenge 1', () => {
   test('it should return the last 10 characters of a string as an array', () => {
@@ -317,7 +363,10 @@ describe('Testing challenge 6', () => {
   });
 });
 
+ arrays-2d
 describe('Testing challenge 7', () => {
+
+main
   const battleshipData = [
     ['#', ' ', '#', ' '],
     ['#', ' ', '#', ' '],
@@ -336,7 +385,9 @@ describe('Testing challenge 7', () => {
   });
 });
 
+ arrays-2d
 describe('Testing challenge 8', () => {
+
   test('It should multiply all the numbers together', () => {
     expect(calculateProduct([[1, 2], [3, 4], [5, 6]])).toStrictEqual(720);
   });
@@ -349,20 +400,27 @@ describe('Testing challenge 8', () => {
   });
 });
 
-describe('Testing challenge 9', () => {
+ arrays-2d
+describe('Testing challenge 9', () => 
+
   test('It should calculate and return the average temperature of the data set', () => {
     expect(averageDailyTemperature(weeklyTemperatures)).toStrictEqual(60.25);
   });
 });
 
+ arrays-2d
 describe('Testing challenge 10', () => {
+
   test('It should return the lowest weekly average temperature within the data set', () => {
     expect(lowestWeeklyAverage(weeklyTemperatures)).toStrictEqual(57);
     expect(lowestWeeklyAverage(lowestWeeklyTemperatureData)).toStrictEqual(46);
   });
 });
 
+ arrays-2d
 describe('Testing challenge 11', () => {
+
+ main
   test('It should return the total count for each row', () => {
     let result = excel('1,1,1\n4,4,4\n9,9,9');
     expect(result.length).toStrictEqual(3);
@@ -371,3 +429,4 @@ describe('Testing challenge 11', () => {
     expect(result[2]).toStrictEqual(27);
   });
 });
+------------------------------------------------------------------------------------------------ */
