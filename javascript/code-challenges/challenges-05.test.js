@@ -37,8 +37,13 @@ Write a function named addPurchases that, given an array of objects as input, us
 ------------------------------------------------------------------------------------------------ */
 
 const addPurchases = (arr) => {
-  // Solution code here...
+ 
+  return arr.reduce((a, b) => a + b.purchasePrice, 0);
+
+
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -49,7 +54,8 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
-  // Solution code here...
+
+  return arr.reduce((a, b) => b ? a + 1 : a, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -109,7 +115,11 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
+  return arr.reduce((a, b) => {
+    a.push(b.name);
+    return a;
+  }, []);
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -120,9 +130,10 @@ Write a function named reversedString that takes in a string and returns a strin
 Note: You must use reduce for this challenge. You may not use the built-in .reverse() string method.
 ------------------------------------------------------------------------------------------------ */
 
-const reversedString = (str) => {
-  // Solution code here...
-};
+function reversedString(string) {
+  return string.split("").reduce((acc, current) => current + acc);
+}
+//This function uses the split() method to convert the input string into an array of characters. Then, it uses the reduce() method to iterate through the characters in reverse order and combine them into a single string. The anonymous function passed to reduce takes two arguments: acc which is the accumulated value and current which is the current value. The function concatenates current followed by acc to build the reversed string.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -174,8 +185,15 @@ const characters = [
 ];
 
 const countNumberOfChildren = (arr) => {
-  // Solution code here...
+  return arr.reduce((acc, current) => {
+    if (current.children) {
+      acc += current.children.length;
+    }
+    return acc;
+  }, 0);
 };
+//This function uses the reduce() method to iterate through the array of characters and check if the current character has a children property. If it does, it adds the length of the children array to the accumulator. The reduce() method takes an initial value of 0 for the accumulator. The final value of the accumulator will be the total number of children in the dataset.npm test
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -294,27 +312,27 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should add the purchase price', () => {
     expect(addPurchases([{item: 'switch', purchasePrice: 399}, {item: 'toothpaste', purchasePrice: 2}])).toStrictEqual(401);
     expect(addPurchases([])).toStrictEqual(0);
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return the length of the array', () => {
     expect(countNumberOfElements([1, 2, 3, 4, 5])).toStrictEqual(5);
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return an array continaing the names of the characters', () => {
     expect(returnNames(starWarsData)).toStrictEqual([ 'Luke Skywalker', 'C-3PO', 'R2-D2', 'Darth Vader', 'Leia Organa' ]);
     expect(returnNames(starWarsData).length).toStrictEqual(5);
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return the string with the characters in reverse order', () => {
     expect(reversedString('Code 301')).toStrictEqual('103 edoC');
   });

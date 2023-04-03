@@ -14,6 +14,7 @@ HINT: Look at the tests to see how the callback functions are used.
 ------------------------------------------------------------------------------------------------ */
 
 function upper(str) {
+  // console.log(str.toUpperCase(), 'upperstr');
   return str.toUpperCase();
 }
 
@@ -22,12 +23,11 @@ function lower(str) {
 }
 
 const updateAnimal = (arr, callback) => {
-  let newArray = [];
+  const newArray = arr.map(ele => callback(ele));
+  // console.log(newArray, 'newarray');
+  return newArray;
 
-arr.forEach(animal => {
-  newArray.push(callback(animal));
 };
-);
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -39,8 +39,8 @@ For example: 'Cat' would come before 'apple'
 ------------------------------------------------------------------------------------------------ */
 
 const sortNames = (arr) => {
+  // console.log(arr.sort(), 'srtarray');
   return arr.sort();
-
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -52,8 +52,15 @@ HINT: Beware... JS default is "Lexical" ordering.
 ------------------------------------------------------------------------------------------------ */
 
 const sortNumbers = (arr) => {
-  return arr.sort((a,b) => a - b);
+  return arr.sort((a, b) => {
+    if(a > b) {return 1;
+    } else if (a < b) {
+      return -1;
+    } else { return 0;
+    }
+  });
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -64,9 +71,14 @@ HINT: Do it with a custom sort callback, not with using `.reverse()`. ;)
 ------------------------------------------------------------------------------------------------ */
 
 const sortBackwards = (arr) => {
-  const sortNumbers = (arr) => {
-    return arr.sort((a,b) => b - a);
-  };
+  return arr.sort((a, b) => {
+    if(a < b)
+    {return 1;
+    } else if (a > b) {
+      return -1;
+    } else { return 0;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -80,7 +92,9 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 ------------------------------------------------------------------------------------------------ */
 //same as number 2
 const alphabetize = (arr) => {
+  console.log(arr.sort(), 'arrsorted');
   return arr.sort();
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -97,7 +111,14 @@ Here is an example of the input:
 ------------------------------------------------------------------------------------------------ */
 
 const sortByPrice = (arr) => {
-  // Solution code here...
+  return arr.sort((a, b) => {
+    if(a.price > b.price) {return 1;
+    } else if (a.price < b.price) {
+      return -1;
+    } else { return 0;
+    }
+  });
+  // return arr.price.
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -109,7 +130,7 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 ------------------------------------------------------------------------------------------------ */
 //finish on code review
 const alphabetizeBetter = (arr) => {
-  return arr.sort((a,b) => a.toLowerCase() ? 1 : a.tolowerCase())
+  return arr.sort((a, b) => a.toLowerCase() > b.toLowerCase() ? 1 : a.toLowerCase() < b.toLowerCase() ? -1 : 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -264,7 +285,7 @@ describe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should sort items by their price', () => {
     expect(sortByPrice([
       {name: 'Sweatshirt', price: 45},
@@ -280,7 +301,7 @@ xdescribe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should alphabetize without regard to capitalization', () => {
     expect(alphabetizeBetter(['Alice', 'apple', 'alert', 'Average'])).toStrictEqual([ 'alert', 'Alice', 'apple', 'Average' ]);
     const ans = alphabetizeBetter(['alphabet', 'Zebra', 'Alphabet', 'carrot']);
